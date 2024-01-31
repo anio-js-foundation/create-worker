@@ -35,5 +35,13 @@ export default async function(request_handler, worker_options = {}) {
 
 	await master.slaveReady()
 
-	return master
+	return {
+		sendRequest(...args) {
+			return master.sendRequest(...args)
+		},
+
+		terminate() {
+			return worker.terminate()
+		}
+	}
 }
