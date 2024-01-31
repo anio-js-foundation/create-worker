@@ -28,7 +28,7 @@ export default async function(request_handler, worker_options = {}) {
 		createWorker = await import(`${base_url}/createWebWorker.mjs`)
 	}
 
-	const worker = await createWorker(`${base_url}/worker.mjs`, [request_handler], worker_options)
+	const worker = await createWorker.default(`${base_url}/worker.mjs`, [request_handler], worker_options)
 	const master = createMasterInterface(worker.sendMessage)
 
 	worker.onMessage = master.onMessage
