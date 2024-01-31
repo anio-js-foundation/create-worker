@@ -11,7 +11,6 @@ export default async function(createWorker, request_handler, worker_options = {}
 
 		is_node = true
 	} else {
-
 		if (!("importmap" in worker_options)) {
 			worker_options.importmap = {}
 		}
