@@ -12,18 +12,16 @@
   "dependencies": {
     "@anio-js-foundation/browser-create-web-worker": "^0.3.1",
     "@anio-js-foundation/master-slave-protocol": "^0.7.2",
-    "@anio-js-foundation/node-create-worker": "^0.4.4"
+    "@anio-js-foundation/node-create-worker": "^0.4.6"
   },
   "devDependencies": {
     "@anio-js-foundation/bundle-package": "^2.1.0"
   },
   "scripts": {
-    "prepare": "node prepare.mjs && ./node_modules/.bin/bundle-package . worker.mjs createNodeWorker.mjs createWebWorker.mjs"
+    "prepare": "node prepare.mjs && ./node_modules/.bin/bundle-package . worker.mjs"
   },
   "files": [
     "./dist/package.mjs",
-    "./dist/worker.mjs",
-    "./dist/createNodeWorker.mjs",
-    "./dist/createWebWorker.mjs"
+    "./dist/worker.mjs"
   ]
 }
