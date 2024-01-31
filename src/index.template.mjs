@@ -1,7 +1,7 @@
 import {createMasterInterface} from "@anio-js-foundation/master-slave-protocol"
 
-export default async function(createWorker, request_handler, worker_options = {}) {
-	let is_node = false, base_url = ""
+export default async function(request_handler, worker_options = {}) {
+	let is_node = false, base_url = "", createWorker = null
 
 	base_url = import.meta.url.slice(0, import.meta.url.lastIndexOf("/")) + "/"
 
@@ -10,6 +10,8 @@ export default async function(createWorker, request_handler, worker_options = {}
 		base_url = base_url.slice("file://".length)
 
 		is_node = true
+
+		createWorker = await import(`${base_url}/createNodeWorker.mjs`)
 	} else {
 		if (!("importmap" in worker_options)) {
 			worker_options.importmap = {}
@@ -22,6 +24,8 @@ export default async function(createWorker, request_handler, worker_options = {}
 		worker_options.importmap.imports[
 			"@anio-js-foundation/master-slave-protocol"
 		] = `data:text/javascript;base64,$master-slave-protocol-base64$`
+
+		createWorker = await import(`${base_url}/createWebWorker.mjs`)
 	}
 
 	const worker = await createWorker(`${base_url}/worker.mjs`, [request_handler], worker_options)
