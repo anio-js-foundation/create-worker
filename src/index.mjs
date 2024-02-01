@@ -1,7 +1,7 @@
 import {createMasterInterface} from "@anio-js-foundation/master-slave-protocol"
 import nodeCreateWorker from "@anio-js-foundation/node-create-worker"
 import browserCreateWebWorker from "@anio-js-foundation/browser-create-web-worker"
-import createTemporaryResource from "@anio-js-core-foundation/create-temporary-resource"
+import createTemporaryResource from "@anio-js-foundation/create-temporary-resource"
 import isNode from "@anio-js-core-foundation/is-node"
 
 export default async function(request_handler, worker_options = {}) {
