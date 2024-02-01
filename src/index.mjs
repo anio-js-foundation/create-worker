@@ -4,7 +4,9 @@ import browserCreateWebWorker from "@anio-js-foundation/browser-create-web-worke
 import createTemporaryResource from "@anio-js-foundation/create-temporary-resource"
 import isNode from "@anio-js-core-foundation/is-node"
 
-export default async function(request_handler, worker_options = {}) {
+export default async function(
+	request_handler, request_handler_export_name = "requestHandler", worker_options = {}
+) {
 	let is_node = false, base_url = "", createWorker = null
 
 	base_url = import.meta.url.slice(0, import.meta.url.lastIndexOf("/")) + "/"
@@ -23,7 +25,10 @@ export default async function(request_handler, worker_options = {}) {
 		`$bootstrap.mjs_file_contents$`, "text/javascript"
 	)
 
-	const worker = await createWorker(bootstrap.location, [request_handler], worker_options)
+	const worker = await createWorker(bootstrap.location, [
+		request_handler, request_handler_export_name
+	], worker_options)
+
 	const master = createMasterInterface(worker.sendMessage)
 
 	worker.onMessage = master.onMessage
