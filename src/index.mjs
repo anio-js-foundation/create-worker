@@ -7,13 +7,9 @@ import isNode from "@anio-js-core-foundation/is-node"
 export default async function(
 	request_handler, request_handler_export_name = "requestHandler", worker_options = {}
 ) {
-	let is_node = false, base_url = "", createWorker = null
-
-	base_url = import.meta.url.slice(0, import.meta.url.lastIndexOf("/")) + "/"
+	let is_node = false, createWorker = null
 
 	if (isNode()) {
-		base_url = base_url.slice("file://".length)
-
 		is_node = true
 
 		createWorker = nodeCreateWorker
