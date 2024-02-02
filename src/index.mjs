@@ -7,15 +7,7 @@ import isNode from "@anio-js-core-foundation/is-node"
 export default async function(
 	request_handler, request_handler_export_name = "requestHandler", worker_options = {}
 ) {
-	let is_node = false, createWorker = null
-
-	if (isNode()) {
-		is_node = true
-
-		createWorker = nodeCreateWorker
-	} else {
-		createWorker = browserCreateWebWorker
-	}
+	const createWorker = isNode() ? nodeCreateWorker : browserCreateWebWorker
 
 	const bootstrap = await createTemporaryResource(
 		`$bootstrap.mjs_file_contents$`, "text/javascript"
