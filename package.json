@@ -12,11 +12,11 @@
   "devDependencies": {
     "@anio-js-core-foundation/create-random-identifier": "^1.0.1",
     "@anio-js-core-foundation/is-node": "^1.0.0",
-    "@anio-js-foundation/browser-create-web-worker": "^0.3.5",
+    "@anio-js-foundation/browser-create-web-worker": "^0.3.7",
     "@anio-js-foundation/bundle-package": "^3.1.0",
     "@anio-js-foundation/create-temporary-resource": "^0.3.1",
     "@anio-js-foundation/master-slave-protocol": "^0.10.0",
-    "@anio-js-foundation/node-create-worker": "^0.4.10"
+    "@anio-js-foundation/node-create-worker": "^0.4.12"
   },
   "scripts": {
     "prepare": "./node_modules/.bin/bundle-package . bootstrap.mjs && rm dist/bootstrap.mjs"
