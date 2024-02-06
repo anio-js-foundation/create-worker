@@ -4,6 +4,7 @@ import browserCreateWebWorker from "@anio-js-foundation/browser-create-web-worke
 import createTemporaryResource from "@anio-js-foundation/create-temporary-resource"
 import createRandomIdentifier from "@anio-js-core-foundation/create-random-identifier"
 import isNode from "@anio-js-core-foundation/is-node"
+import bootstrap_code from "includeStaticResource:../dist/bootstrap.mjs"
 
 export default async function(
 	request_handler, request_handler_export_name = "requestHandler", worker_options = {}
@@ -12,7 +13,7 @@ export default async function(
 	const createWorker = isNode() ? nodeCreateWorker : browserCreateWebWorker
 
 	const bootstrap = await createTemporaryResource(
-		`$bootstrap.mjs_file_contents$`, {type: "text/javascript"}
+		bootstrap_code, {type: "text/javascript"}
 	)
 
 	const worker = await createWorker(bootstrap.location, [
