@@ -12,7 +12,7 @@ export default async function(
 	const createWorker = isNode() ? nodeCreateWorker : browserCreateWebWorker
 
 	const bootstrap = await createTemporaryResource(
-		`$bootstrap.mjs_file_contents$`, "text/javascript"
+		`$bootstrap.mjs_file_contents$`, {type: "text/javascript"}
 	)
 
 	const worker = await createWorker(bootstrap.location, [
