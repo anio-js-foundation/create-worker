@@ -12,8 +12,8 @@ const worker = await createWorker(
 	}
 )
 
-worker.onMessage = (msg) => {
+worker.on("message", (msg) => {
 	console.log("parent got message from child:", msg)
-}
+})
 
 worker.sendMessage("hello from parent")
