@@ -24,7 +24,7 @@ export default async function(
 
 	worker.onMessage = master.onMessage
 
-	await master.slaveReady()
+	const slave = await master.slaveReady()
 
 	bootstrap.cleanup()
 
@@ -33,6 +33,10 @@ export default async function(
 
 		sendRequest(...args) {
 			return master.sendRequest(...args)
+		},
+
+		getPushedMessages() {
+			return slave.getPushedMessages()
 		},
 
 		terminate() {
