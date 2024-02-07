@@ -7,13 +7,13 @@ const __dirname = path.dirname(
 )
 
 const worker = await createWorker(
-	path.join(__dirname, "child.mjs"), "requestHandler", {
+	path.join(__dirname, "child.mjs"), [1,2,3], "WorkerMain", {
 		silent: false
 	}
 )
 
-worker.sendRequest("init")
+worker.onMessage = (msg) => {
+	console.log("parent got message from child:", msg)
+}
 
-setInterval(() => {
-	console.log(worker.getPushedMessages())
-}, 1000)
+worker.sendMessage("hello from parent")

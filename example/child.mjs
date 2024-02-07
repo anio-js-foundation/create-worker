@@ -1,5 +1,11 @@
-export async function requestHandler(request) {
-	setTimeout(() => {
-		this.pushMessage(`your request was ${JSON.stringify(request)}`)
-	}, 1000)
+export async function WorkerMain(...args) {
+
+	console.log("hello!", args, this)
+
+	this.onMessage = (msg) => {
+		console.log("child got message from parent:", msg)
+	}
+
+	this.sendMessage("hello from child")
+
 }
