@@ -16,9 +16,7 @@ export default async function(
 
 	const worker = await createWorker(bootstrap.location, [
 		worker_main_url, worker_main_export_name, ...worker_args
-	], {
-		silent: false
-	})
+	], worker_options)
 
 	bootstrap.cleanup()
 
