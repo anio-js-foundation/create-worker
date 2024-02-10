@@ -1,7 +1,7 @@
 import createRequestResponseProtocol from "@anio-js-foundation/request-response-protocol"
 
 async function initialize(worker_api, worker_main, worker_args) {
-	const protocol = createRequestResponseProtocol(worker_api, "worker")
+	const protocol = createRequestResponseProtocol(worker_api, "NodeWorker -> Main")
 
 	// use setTimeout(fn, 0)
 	// to make sure the parent can initialize before we're sending any data

@@ -20,7 +20,7 @@ async function createWorker(
 
 	bootstrap.cleanup()
 
-	const protocol = createRequestResponseProtocol(worker, "parent")
+	const protocol = createRequestResponseProtocol(worker, "Main -> NodeWorker")
 
 	protocol.terminate = () => { return worker.terminate() }
 
