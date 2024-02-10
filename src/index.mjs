@@ -2,6 +2,7 @@ import nodeCreateWorker from "@anio-js-foundation/node-create-worker"
 import browserCreateWebWorker from "@anio-js-foundation/browser-create-web-worker"
 import createTemporaryResource from "@anio-js-foundation/create-temporary-resource"
 import isNode from "@anio-js-core-foundation/is-node"
+import createRequestResponseProtocol from "@anio-js-foundation/request-response-protocol"
 import bootstrap_code from "includeStaticResource:../dist/bootstrap.mjs"
 
 export default async function(
@@ -15,9 +16,17 @@ export default async function(
 
 	const worker = await createWorker(bootstrap.location, [
 		worker_main_url, worker_main_export_name, ...worker_args
-	], worker_options)
+	], {
+		silent: false
+	})
 
 	bootstrap.cleanup()
 
-	return worker
+	const protocol = createRequestResponseProtocol(worker, "parent")
+
+	protocol.terminate = () => { return worker.terminate() }
+
+	await protocol.ready()
+
+	return protocol
 }

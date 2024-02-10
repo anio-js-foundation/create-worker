@@ -12,8 +12,8 @@ const worker = await createWorker(
 	}
 )
 
-worker.on("message", (msg) => {
-	console.log("parent got message from child:", msg)
-})
+worker.requestHandler = (request) => {
+	return "parent got request: " + JSON.stringify(request)
+}
 
-worker.sendMessage("hello from parent")
+worker.sendRequest("hello from parent").then(console.log)

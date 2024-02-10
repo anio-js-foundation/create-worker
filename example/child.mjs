@@ -1,7 +1,9 @@
 export async function WorkerMain(...args) {
-	this.on("message", (msg) => {
-		console.log("child got message from parent:", msg)
-	})
+	console.log("args", args)
 
-	this.sendMessage("hello from child")
+	this.requestHandler = (request) => {
+		return "child got request: " + JSON.stringify(request)
+	}
+
+	console.log(await this.sendRequest("hello from child"))
 }
