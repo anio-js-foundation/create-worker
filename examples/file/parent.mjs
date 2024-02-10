@@ -1,4 +1,4 @@
-import createWorker from "../dist/package.mjs"
+import createWorker from "../../dist/package.mjs"
 import {fileURLToPath} from "node:url"
 import path from "node:path"
 
