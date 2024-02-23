@@ -22,7 +22,11 @@ async function createWorker(
 
 	const protocol = createRequestResponseProtocol(worker, "Main -> NodeWorker")
 
-	protocol.terminate = () => { return worker.terminate() }
+	protocol.terminate = () => {
+		protocol.closeAllPendingRequests(`Worker was terminated.`)
+
+		return worker.terminate();
+	}
 
 	await protocol.ready()
 
