@@ -1,7 +1,7 @@
-import nodeCreateWorker from "@anio-js-foundation/node-create-worker"
-import browserCreateWebWorker from "@anio-js-foundation/browser-create-web-worker"
+import nodeCreateWorker from "@anio-node-foundation/create-worker"
+import browserCreateWebWorker from "@anio-browser-foundation/create-web-worker"
 import createTemporaryResource from "@anio-js-foundation/create-temporary-resource"
-import isNode from "@anio-js-core-foundation/is-node"
+import isNode from "@anio-js-foundation/is-node"
 import createRequestResponseProtocol from "@anio-js-foundation/request-response-protocol"
 import bootstrap_code from "includeStaticResource:../dist/bootstrap.mjs"
 

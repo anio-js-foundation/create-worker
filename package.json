@@ -10,15 +10,15 @@
     "url": "git+https://github.com/anio-js-foundation/create-worker.git"
   },
   "devDependencies": {
-    "@anio-js-core-foundation/is-node": "^1.0.0",
-    "@anio-js-foundation/browser-create-web-worker": "^0.6.0",
-    "@anio-js-foundation/bundle-package": "^3.1.2",
-    "@anio-js-foundation/create-temporary-resource": "^0.3.1",
-    "@anio-js-foundation/node-create-worker": "^0.10.1",
-    "@anio-js-foundation/request-response-protocol": "^1.0.0"
+    "@anio-browser-foundation/create-web-worker": "^1.0.0",
+    "@anio-js-foundation/create-temporary-resource": "^1.0.0",
+    "@anio-js-foundation/is-node": "^2.0.0",
+    "@anio-js-foundation/request-response-protocol": "^2.0.0",
+    "@anio-node-foundation/create-worker": "^1.0.0",
+    "@anio-software/npm-package-bundler": "^1.0.0"
   },
   "scripts": {
-    "prepare": "./node_modules/.bin/bundle-package . bootstrap.mjs && rm dist/bootstrap.mjs"
+    "prepare": "./node_modules/.bin/npm-package-bundler ."
   },
   "files": [
     "./dist/package.mjs"
